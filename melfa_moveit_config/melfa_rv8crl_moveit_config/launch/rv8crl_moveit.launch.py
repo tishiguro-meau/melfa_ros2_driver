@@ -156,7 +156,7 @@ def generate_launch_description():
     # Servo node for realtime control
     servo_node = Node(
         package="moveit_servo",
-        executable="servo_node_main",
+        executable="servo_node",
         parameters=[
             servo_params,
             moveit_config.robot_description,
