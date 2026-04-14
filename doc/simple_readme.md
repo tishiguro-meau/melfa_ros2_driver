@@ -24,7 +24,7 @@ rosdep update
 ```
 4. Install dependencies
 ```
-rosdep install -r --from-paths . --ignore-src --rosdistro humble -y
+rosdep install -r --from-paths . --ignore-src --rosdistro jazzy -y
 ```
 5. Build
 ```

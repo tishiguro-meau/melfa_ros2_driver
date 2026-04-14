@@ -7,7 +7,7 @@ MELFA ROS2 is designed to interface the CR800 robot controller with the ROS 2 so
 
 ## __1. Installation__
 
-This manual is for <u>__ROS 2 Humble__</u> using __rtexc api version 1.0__. For more information regarding __rtexc api__, please refer to [CR750/CR751 Series Controller, CR800 Series Controller Ethernet Function Instruction Manual](https://www.mitsubishielectric.com/fa/download/search.page?mode=manual&kisyu=/robot&q=CR750%2FCR751%20Series%20Controller%2C%20CR800%20Series%20Controller%20Ethernet%20Function%20Instruction%20Manual&sort=0&style=0&lang=2&category1=0&filter_discontinued=0&filter_bundled=0) from [Robot Industrial/Collaborative Robot MELFA Manual](https://www.mitsubishielectric.com/fa/download/search.page?mode=manual&kisyu=/robot).
+This manual is for <u>__ROS 2 Jazzy__</u> using __rtexc api version 1.0__. For more information regarding __rtexc api__, please refer to [CR750/CR751 Series Controller, CR800 Series Controller Ethernet Function Instruction Manual](https://www.mitsubishielectric.com/fa/download/search.page?mode=manual&kisyu=/robot&q=CR750%2FCR751%20Series%20Controller%2C%20CR800%20Series%20Controller%20Ethernet%20Function%20Instruction%20Manual&sort=0&style=0&lang=2&category1=0&filter_discontinued=0&filter_bundled=0) from [Robot Industrial/Collaborative Robot MELFA Manual](https://www.mitsubishielectric.com/fa/download/search.page?mode=manual&kisyu=/robot).
 
 ### __Build and Install__
 
@@ -15,13 +15,13 @@ This manual is for <u>__ROS 2 Humble__</u> using __rtexc api version 1.0__. For 
 ```
 mkdir -p ~/melfa_ws/src
 cd ~/melfa_ws/src
-source /opt/ros/humble/setup.bash
+source /opt/ros/jazzy/setup.bash
 ```
 Download [MELFA ROS2 Driver](https://github.com/Mitsubishi-Electric-Asia/melfa_ros2_driver/releases) from the repository and extract it into your working directory.
 
 Or you can clone the repository
 ```
-git clone -b humble https://github.com/Mitsubishi-Electric-Asia/melfa_ros2_driver.git
+git clone -b jazzy https://github.com/Mitsubishi-Electric-Asia/melfa_ros2_driver.git
 ```
 However, only the release tag versions are tested and covered by after-sales support.
 
@@ -29,10 +29,9 @@ However, only the release tag versions are tested and covered by after-sales sup
 2. Install MoveIt Servo and CHOMP
 
 ```
-sudo apt install ros-humble-moveit-chomp-optimizer-adapter
-sudo apt install ros-humble-moveit-planners-chomp
-sudo apt install ros-humble-chomp-motion-planner
-sudo apt install ros-humble-moveit-servo
+sudo apt install ros-jazzy-moveit-planners-chomp
+sudo apt install ros-jazzy-chomp-motion-planner
+sudo apt install ros-jazzy-moveit-servo
 ```
 
 3. Update package dependency sources
@@ -46,7 +45,7 @@ rosdep update
 
 ```
 cd ~/melfa_ws
-rosdep install -r --from-paths . --ignore-src --rosdistro humble -y --skip-keys warehouse_ros_mongo
+rosdep install -r --from-paths . --ignore-src --rosdistro jazzy -y
 ```
 
 4. Build the packages

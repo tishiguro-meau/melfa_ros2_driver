@@ -1,6 +1,12 @@
 <img src="./doc/figures/MELFA_t.png" width="400" height="98"> <img src="./doc/figures/ROS-AP-logo.png" width="208" height="98">
 
 # __MITSUBISHI ELECTRIC INDUSTRIAL ROBOT MELFA ROS2 DRIVER__
+
+> **Note**: This is an unofficial port of `melfa_ros2_driver` to ROS 2 Jazzy.
+> The upstream repository at Mitsubishi-Electric-Asia officially supports Humble only.
+> This fork has been tested on Jetson AGX Thor with Mitsubishi MELFA RV-2FR and CR800 controller.
+> Only the `melfa_rv2fr_moveit_config` package has been fully verified on real hardware;
+> other robot model configs have received the same code changes but are untested on real hardware.
     
 ## __1. Overview__
 
@@ -31,14 +37,14 @@ MELFA ROS2 Driver consists of six main components: melfa_bringup, melfa_descript
 
 ### __melfa_driver__
 
-- supports [ros2_control](https://control.ros.org/humble/doc/getting_started/getting_started.html).
+- supports [ros2_control](https://control.ros.org/jazzy/doc/getting_started/getting_started.html).
 - provides __real time communication__<sup>1</sup> hardware interface with our CR800/860-R/Q/D robot controllers via __rtexc api__ <sup>2</sup>. 
 - connects to the robot controller via __rtexc api__ to control the robot via __MELFA BASIC VI__<sup>3</sup> __MXT__<sup>4</sup> command. The robot position command, robot state & I/O data are transmitted through this connection. 
 - includes quality of life features built into __rtexc api__ such as user configurable disconnection detection and debugging tools.
 
 ### __melfa_io_controllers__
 
-- supports [ros2_control](https://control.ros.org/humble/doc/getting_started/getting_started.html).
+- supports [ros2_control](https://control.ros.org/jazzy/doc/getting_started/getting_started.html).
 - user configurable io controllers.
 - provides ROS 2 controllers for GPIO control
 
