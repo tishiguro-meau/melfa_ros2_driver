@@ -321,9 +321,10 @@ Launch Servo Keyboard Input [Terminal 3]
 ros2 run melfa_rv7frl_moveit_config servo_keyboard_input
 ```
 
-## 6. Gazebo Fortress
+## 6. Gazebo Harmonic
 
-Some modifications are required for Gazebo-Fortress to launch correctly.
+Some modifications are required for Gazebo Harmonic to launch correctly.
+(ROS 2 Jazzy ships with Gazebo Harmonic via `gz_ros2_control` / `ros_gz_sim`.)
 
 In melfa_description/config/"robot model"_controllers.yaml, swap the commented lines
 
@@ -356,7 +357,7 @@ Build the melfa_description package
 ```
 colcon build --packages-select melfa_description
 ```
-Launch Gazebo-Fortress with the following command
+Launch Gazebo Harmonic with the following command
 ```
 ros2 launch melfa_bringup rv7frl_control.launch.py use_sim:=true controller_type:="R" 
 ```
