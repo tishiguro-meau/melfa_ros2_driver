@@ -315,10 +315,37 @@ Launch moveit config [Terminal 2]
 ros2 launch melfa_rv7frl_moveit_config rv7frl_moveit.launch.py
 ```
 
+### Select the servo command type
+
+On ROS 2 Jazzy, `moveit_servo` accepts only one command type at a time
+(`JOINT_JOG`, `TWIST`, or `POSE`). The default is `JOINT_JOG`.
+Use the `/servo_node/switch_command_type` service to change it.
+
+```
+# Enable Cartesian teleoperation (arrow keys in servo_keyboard_input)
+ros2 service call /servo_node/switch_command_type moveit_msgs/srv/ServoCommandType "{command_type: 1}"
+
+# Enable joint jog (number keys 1..6 in servo_keyboard_input) -- default on startup
+ros2 service call /servo_node/switch_command_type moveit_msgs/srv/ServoCommandType "{command_type: 0}"
+```
+
+`command_type` enum: `0 = JOINT_JOG`, `1 = TWIST`, `2 = POSE`.
+
+> Note: On Humble all three input types were handled simultaneously, but
+> on Jazzy the servo processes only the currently selected type. Switch
+> before using the corresponding keys on `servo_keyboard_input`.
+
 Launch Servo Keyboard Input [Terminal 3]
 
 ```
 ros2 run melfa_rv7frl_moveit_config servo_keyboard_input
+```
+
+### Pause / resume servoing
+
+```
+ros2 service call /servo_node/pause_servo std_srvs/srv/SetBool "{data: true}"   # pause
+ros2 service call /servo_node/pause_servo std_srvs/srv/SetBool "{data: false}"  # resume
 ```
 
 ## 6. Gazebo Harmonic
