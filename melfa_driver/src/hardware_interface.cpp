@@ -68,25 +68,25 @@ void MELFAPositionHardwareInterface::setIO(const std::vector<double>& io_command
 }
 
 hardware_interface::CallbackReturn
-MELFAPositionHardwareInterface::on_init(const hardware_interface::HardwareInfo& system_info)
+MELFAPositionHardwareInterface::on_init(const hardware_interface::HardwareComponentInterfaceParams& params)
 {
   /**
    * @brief Initialization method for MELFAPositionHardwareInterface class
    *
    * This function initializes IO data entities and validates hardware components
    *
-   * @param system_info hardware_info structure with data from robot description file.
+   * @param params HardwareComponentInterfaceParams containing HardwareInfo and other framework-provided data.
    * @returns CallbackReturn::SUCCESS if components and interfaces meets set expectations
    * @returns CallbackReturn::ERROR if component or interface doesn't meet set expectations
    *
    */
 
-  if (hardware_interface::SystemInterface::on_init(system_info) != hardware_interface::CallbackReturn::SUCCESS)
+  if (hardware_interface::SystemInterface::on_init(params) != hardware_interface::CallbackReturn::SUCCESS)
   {
     return hardware_interface::CallbackReturn::ERROR;
   }
 
-  info_ = system_info;
+  info_ = params.hardware_info;
   execution_init_ = true;
 
   // Reading IO limits from hardware info structure for specific IO interfaces

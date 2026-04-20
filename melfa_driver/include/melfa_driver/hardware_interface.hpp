@@ -54,7 +54,8 @@ public:
   RCLCPP_SHARED_PTR_DEFINITIONS(MELFAPositionHardwareInterface)
 
   MELFA_HARDWARE_PUBLIC
-  hardware_interface::CallbackReturn on_init(const hardware_interface::HardwareInfo& system_info) override;
+  hardware_interface::CallbackReturn
+  on_init(const hardware_interface::HardwareComponentInterfaceParams& params) override;
 
   MELFA_HARDWARE_PUBLIC
   std::vector<hardware_interface::StateInterface::ConstSharedPtr> on_export_state_interfaces() override;
