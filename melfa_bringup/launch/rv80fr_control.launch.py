@@ -300,9 +300,9 @@ def generate_launch_description():
 
 
     switch_controller_event_handler = RegisterEventHandler(
-        OnProcessStart(
+        OnProcessExit(
             target_action=forward_position_controller_spawner,
-            on_start=[
+            on_exit=[
                 switch_controllers
             ]
         )
