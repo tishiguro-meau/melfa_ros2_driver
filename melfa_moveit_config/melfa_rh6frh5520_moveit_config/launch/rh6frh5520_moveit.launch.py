@@ -14,14 +14,13 @@
 
 import os
 from launch import LaunchDescription
-from launch.actions import DeclareLaunchArgument, RegisterEventHandler, ExecuteProcess
+from launch.actions import DeclareLaunchArgument
 from launch.conditions import IfCondition
 from launch.substitutions import LaunchConfiguration, PathJoinSubstitution
 from launch_ros.actions import Node
 from launch_ros.substitutions import FindPackageShare
 from moveit_configs_utils import MoveItConfigsBuilder
 from launch_param_builder import ParameterBuilder
-from launch.event_handlers import OnProcessStart
 
 def generate_launch_description():
     # Declare arguments
@@ -166,24 +165,7 @@ def generate_launch_description():
         output="screen",
     )
 
-    # Service request to start servo
-    servo_trigger = ExecuteProcess(
-        cmd=["ros2", "service", "call", "/servo_node/start_servo", "std_srvs/srv/Trigger", "{}"],
-        output="screen",
-    )
-
-    # Event handler which triggers when servo node is running
-    servo_trigger_event_handler = RegisterEventHandler(
-        OnProcessStart(
-            target_action=servo_node,
-            on_start=[
-                servo_trigger
-            ]
-        )
-    )
-
-
-#    nodes = [move_group_node, rviz_node, mongodb_server_node, servo_node, servo_trigger_event_handler]
-    nodes = [move_group_node, rviz_node, servo_node, servo_trigger_event_handler]
+#    nodes = [move_group_node, rviz_node, mongodb_server_node, servo_node]
+    nodes = [move_group_node, rviz_node, servo_node]
 
     return LaunchDescription(declared_arguments + nodes)
