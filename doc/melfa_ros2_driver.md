@@ -315,18 +315,25 @@ Launch moveit config [Terminal 2]
 ros2 launch melfa_rv7frl_moveit_config rv7frl_moveit.launch.py
 ```
 
-### Select the servo command type
+### Select the servo command type (REQUIRED before sending any input)
 
 On ROS 2 Jazzy, `moveit_servo` accepts only one command type at a time
-(`JOINT_JOG`, `TWIST`, or `POSE`). The default is `JOINT_JOG`.
-Use the `/servo_node/switch_command_type` service to change it.
+(`JOINT_JOG`, `TWIST`, or `POSE`). **No command type is selected on startup**;
+the servo ignores all input until `/servo_node/switch_command_type` is called
+at least once. Without this call you will see:
 
 ```
+[WARN] [servo_node]: Command type has not been set, cannot accept input
+```
+
+Call the service to pick a mode:
+
+```
+# Enable joint jog (number keys 1..6 in servo_keyboard_input)
+ros2 service call /servo_node/switch_command_type moveit_msgs/srv/ServoCommandType "{command_type: 0}"
+
 # Enable Cartesian teleoperation (arrow keys in servo_keyboard_input)
 ros2 service call /servo_node/switch_command_type moveit_msgs/srv/ServoCommandType "{command_type: 1}"
-
-# Enable joint jog (number keys 1..6 in servo_keyboard_input) -- default on startup
-ros2 service call /servo_node/switch_command_type moveit_msgs/srv/ServoCommandType "{command_type: 0}"
 ```
 
 `command_type` enum: `0 = JOINT_JOG`, `1 = TWIST`, `2 = POSE`.
