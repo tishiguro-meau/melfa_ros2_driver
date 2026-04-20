@@ -57,10 +57,10 @@ public:
   hardware_interface::CallbackReturn on_init(const hardware_interface::HardwareInfo& system_info) override;
 
   MELFA_HARDWARE_PUBLIC
-  std::vector<hardware_interface::StateInterface> export_state_interfaces() override;
+  std::vector<hardware_interface::StateInterface::ConstSharedPtr> on_export_state_interfaces() override;
 
   MELFA_HARDWARE_PUBLIC
-  std::vector<hardware_interface::CommandInterface> export_command_interfaces() override;
+  std::vector<hardware_interface::CommandInterface::SharedPtr> on_export_command_interfaces() override;
 
   MELFA_HARDWARE_PUBLIC
   hardware_interface::CallbackReturn on_activate(const rclcpp_lifecycle::State & previous_state) override;

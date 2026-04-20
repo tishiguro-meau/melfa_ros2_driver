@@ -391,24 +391,25 @@ MELFAPositionHardwareInterface::on_deactivate(const rclcpp_lifecycle::State& pre
   }
 }
 
-std::vector<hardware_interface::StateInterface> MELFAPositionHardwareInterface::export_state_interfaces()
+std::vector<hardware_interface::StateInterface::ConstSharedPtr>
+MELFAPositionHardwareInterface::on_export_state_interfaces()
 {
   /**
    * @brief State Interfaces export method for MELFAPositionHardwareInterface class
    *
    * This function exports available state interfaces to the relevant ROS 2 controllers
    *
-   * @returns state interfaces as vector
+   * @returns state interfaces as vector of ConstSharedPtr
    * @note addStateInterfaces function facilitates addition of different IO state interfaces
    *
    */
 
-  std::vector<hardware_interface::StateInterface> state_interfaces_;
+  std::vector<hardware_interface::StateInterface::ConstSharedPtr> state_interfaces_;
 
   // Add joint position states as reference to State interfaces
   for (uint i = 0; i < info_.joints.size(); i++)
   {
-    state_interfaces_.emplace_back(hardware_interface::StateInterface(
+    state_interfaces_.emplace_back(std::make_shared<hardware_interface::StateInterface>(
         info_.joints[i].name, hardware_interface::HW_IF_POSITION, &joint_position_states_[i]));
   }
 
@@ -434,8 +435,8 @@ std::vector<hardware_interface::StateInterface> MELFAPositionHardwareInterface::
       {
         for (auto state_if : info_.gpios.at(i).state_interfaces)
         {
-          state_interfaces_.emplace_back(
-              hardware_interface::StateInterface(info_.gpios.at(i).name, state_if.name, &interface_states[counter_++]));
+          state_interfaces_.emplace_back(std::make_shared<hardware_interface::StateInterface>(
+              info_.gpios.at(i).name, state_if.name, &interface_states[counter_++]));
           RCLCPP_INFO(rclcpp::get_logger("MELFAPositionHardwareInterface"), "Added State Interface:  %s/%s",
                       info_.gpios.at(i).name.c_str(), state_if.name.c_str());
         }
@@ -458,24 +459,25 @@ std::vector<hardware_interface::StateInterface> MELFAPositionHardwareInterface::
   return state_interfaces_;
 }
 
-std::vector<hardware_interface::CommandInterface> MELFAPositionHardwareInterface::export_command_interfaces()
+std::vector<hardware_interface::CommandInterface::SharedPtr>
+MELFAPositionHardwareInterface::on_export_command_interfaces()
 {
   /**
    * @brief Command Interfaces export method for MELFAPositionHardwareInterface class
    *
    * This function exports available command interfaces to the relevant ROS 2 controllers
    *
-   * @returns command interfaces as vector
+   * @returns command interfaces as vector of SharedPtr
    * @note addCommandInterfaces function facilitates addition of different IO command interfaces
    *
    */
 
-  std::vector<hardware_interface::CommandInterface> command_interfaces_;
+  std::vector<hardware_interface::CommandInterface::SharedPtr> command_interfaces_;
 
   // Add joint position commands as reference to Command interfaces
   for (size_t i = 0; i < info_.joints.size(); ++i)
   {
-    command_interfaces_.emplace_back(hardware_interface::CommandInterface(
+    command_interfaces_.emplace_back(std::make_shared<hardware_interface::CommandInterface>(
         info_.joints[i].name, hardware_interface::HW_IF_POSITION, &joint_position_commands_[i]));
   }
 
@@ -500,8 +502,8 @@ std::vector<hardware_interface::CommandInterface> MELFAPositionHardwareInterface
       {
         for (auto command_if : info_.gpios.at(i).command_interfaces)
         {
-          command_interfaces_.emplace_back(hardware_interface::CommandInterface(info_.gpios.at(i).name, command_if.name,
-                                                                                &interface_commands[counter_++]));
+          command_interfaces_.emplace_back(std::make_shared<hardware_interface::CommandInterface>(
+              info_.gpios.at(i).name, command_if.name, &interface_commands[counter_++]));
           RCLCPP_INFO(rclcpp::get_logger("MELFAPositionHardwareInterface"), "Added Command Interface:  %s/%s",
                       info_.gpios.at(i).name.c_str(), command_if.name.c_str());
         }
