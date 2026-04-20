@@ -86,7 +86,7 @@ def generate_launch_description():
         .trajectory_execution(file_path="config/moveit_controllers.yaml")
         .planning_pipelines(
             # pipelines=["ompl", "chomp", "pilz_industrial_motion_planner", "stomp"] # Add "stomp" if moveit2 humble branch adds stomp feature
-            pipelines=["ompl", "chomp", "pilz_industrial_motion_planner"]
+            pipelines=["ompl", "chomp", "pilz_industrial_motion_planner", "stomp"]
         )
         .to_moveit_configs()
     )
