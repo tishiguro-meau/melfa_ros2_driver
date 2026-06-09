@@ -19,7 +19,7 @@
         <xacro:property name="wrist_mass" value="0.12190" />
         <xacro:property name="hand_flange_mass" value="0.01879" />
 
-        <material name="white">
+        <material name="${prefix}white">
             <color rgba="1.0 1.0 1.0 1.0"/>
         </material>
         <joint name="${prefix}rv8crl_world_to_base" type="fixed">
@@ -84,7 +84,7 @@
         </joint>
         <link name="${prefix}rv8crl_base">
             <visual>
-            <material name="white"/>
+            <material name="${prefix}white"/>
             <origin rpy="0 0 0" xyz="0 0 0"/>
             <geometry>
                 <mesh filename="package://melfa_description/meshes/rv8crl/base.STL"/>
@@ -102,7 +102,7 @@
         </link>
         <link name="${prefix}rv8crl_shoulder">
             <visual>
-            <material name="white"/>
+            <material name="${prefix}white"/>
             <origin rpy="0 0 0" xyz="0 0 0"/>
             <geometry>
                 <mesh filename="package://melfa_description/meshes/rv8crl/shoulder.STL"/>
@@ -120,7 +120,7 @@
         </link>
         <link name="${prefix}rv8crl_upper_arm">
             <visual>
-            <material name="white"/>
+            <material name="${prefix}white"/>
             <origin rpy="0 0 0" xyz="0 0 0"/>
             <geometry>
                 <mesh filename="package://melfa_description/meshes/rv8crl/upper_arm.STL"/>
@@ -138,7 +138,7 @@
         </link>
         <link name="${prefix}rv8crl_elbow">
             <visual>
-            <material name="white"/>
+            <material name="${prefix}white"/>
             <origin rpy="0 0 0" xyz="0 0 0"/>
             <geometry>
                 <mesh filename="package://melfa_description/meshes/rv8crl/elbow.STL"/>
@@ -156,7 +156,7 @@
         </link>
         <link name="${prefix}rv8crl_forearm">
             <visual>
-            <material name="white"/>
+            <material name="${prefix}white"/>
             <origin rpy="0 0 0" xyz="0 0 0"/>
             <geometry>
                 <mesh filename="package://melfa_description/meshes/rv8crl/forearm.STL"/>
@@ -174,7 +174,7 @@
         </link>
         <link name="${prefix}rv8crl_wrist">
             <visual>
-            <material name="white"/>
+            <material name="${prefix}white"/>
             <origin rpy="0 0 0" xyz="0 0 0"/>
             <geometry>
                 <mesh filename="package://melfa_description/meshes/rv8crl/wrist.STL"/>
@@ -192,7 +192,7 @@
         </link>
         <link name="${prefix}rv8crl_hand_flange">
             <visual>
-            <material name="white"/>
+            <material name="${prefix}white"/>
             <origin rpy="0 0 0" xyz="0 0 0"/>
             <geometry>
                 <mesh filename="package://melfa_description/meshes/rv8crl/hand_flange.STL"/>

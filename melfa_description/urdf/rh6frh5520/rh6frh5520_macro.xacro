@@ -19,7 +19,7 @@
         <xacro:property name="wrist_mass" value="0.12190" />
         <xacro:property name="hand_flange_mass" value="0.01879" />
 
-        <material name="white">
+        <material name="${prefix}white">
             <color rgba="1.0 1.0 1.0 1.0"/>
         </material>
         <joint name="${prefix}rh6frh5520_world_to_base" type="fixed">
@@ -68,7 +68,7 @@
         </joint>
         <link name="${prefix}rh6frh5520_base">
             <visual>
-                <material name="white"/>
+                <material name="${prefix}white"/>
                 <origin rpy="0 0 0" xyz="0 0 0"/>
                 <geometry>
                     <mesh filename="package://melfa_description/meshes/rh6frh5520/base.STL"/>
@@ -86,7 +86,7 @@
         </link>
         <link name="${prefix}rh6frh5520_no1arm">
             <visual>
-                <material name="white"/>
+                <material name="${prefix}white"/>
                 <origin rpy="0 0 0" xyz="0 0 0"/>
                 <geometry>
                     <mesh filename="package://melfa_description/meshes/rh6frh5520/no1arm.STL"/>
@@ -104,7 +104,7 @@
         </link>
         <link name="${prefix}rh6frh5520_no2arm">
             <visual>
-                <material name="white"/>
+                <material name="${prefix}white"/>
                 <origin rpy="0 0 0" xyz="0 0 0"/>
                 <geometry>
                     <mesh filename="package://melfa_description/meshes/rh6frh5520/no2arm.STL"/>
@@ -127,7 +127,7 @@
         </link>
         <link name="${prefix}rh6frh5520_shaft">
             <visual>
-                <material name="white"/>
+                <material name="${prefix}white"/>
                 <origin rpy="0 0 0" xyz="0 0 0"/>
                 <geometry>
                     <mesh filename="package://melfa_description/meshes/rh6frh5520/shaft.STL"/>

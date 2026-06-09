@@ -18,7 +18,7 @@
         <xacro:property name="forearm_mass" value="0.12190" />
         <xacro:property name="wrist_mass" value="0.12190" />
         <xacro:property name="hand_flange_mass" value="0.01879" />
-        <material name="white">
+        <material name="${prefix}white">
             <color rgba="1.0 1.0 1.0 1.0"/>
         </material>
         <joint name="Mate1" type="fixed">
@@ -83,7 +83,7 @@
         </joint>
         <link name="${prefix}rv5as_base">
             <visual>
-                <material name="white"/>
+                <material name="${prefix}white"/>
                 <origin rpy="0.00 0.00 0.00" xyz="0.00 0.00 0.00"/>
                 <geometry>
                     <mesh filename="package://melfa_description/meshes/rv5as/base.STL" />
@@ -101,7 +101,7 @@
         </link>
         <link name="${prefix}rv5as_shoulder">
             <visual>
-                <material name="white"/>
+                <material name="${prefix}white"/>
                 <origin rpy="0.00 0.00 0" xyz="0.00 0.00 0.00"/>
                 <geometry>
                     <mesh filename="package://melfa_description/meshes/rv5as/shoulder.STL" />
@@ -119,7 +119,7 @@
         </link>
         <link name="${prefix}rv5as_upper_arm">
             <visual>
-                <material name="white"/>
+                <material name="${prefix}white"/>
                 <origin rpy="0.00 0.00 0.00" xyz="0.00 0.00 0.00"/>
                 <geometry>
                     <mesh filename="package://melfa_description/meshes/rv5as/upper_arm.STL" />
@@ -137,7 +137,7 @@
         </link>
         <link name="${prefix}rv5as_elbow">
             <visual>
-                <material name="white"/>
+                <material name="${prefix}white"/>
                 <origin rpy="0.00 0.00 0.00" xyz="0.00 0.00 0.00"/>
                 <geometry>
                     <mesh filename="package://melfa_description/meshes/rv5as/elbow.STL" />
@@ -155,7 +155,7 @@
         </link>
         <link name="${prefix}rv5as_forearm">
             <visual>
-                <material name="white"/>
+                <material name="${prefix}white"/>
                 <origin rpy="0.00 0.00 0.00" xyz="0.00 0.00 0.00"/>
                 <geometry>
                     <mesh filename="package://melfa_description/meshes/rv5as/forearm.STL" />
@@ -173,7 +173,7 @@
         </link>
         <link name="${prefix}rv5as_hand_flange">
             <visual>
-                <material name="white"/>
+                <material name="${prefix}white"/>
                 <origin rpy="0.00 0.00 0.00" xyz="0.00 0.00 0.00"/>
                 <geometry>
                     <mesh filename="package://melfa_description/meshes/rv5as/hand_flange.STL" />
@@ -191,7 +191,7 @@
         </link>
         <link name="${prefix}rv5as_wrist">
             <visual>
-                <material name="white"/>
+                <material name="${prefix}white"/>
                 <origin rpy="0.00 0.00 0.00" xyz="0.00 0.00 0.00"/>
                 <geometry>
                     <mesh filename="package://melfa_description/meshes/rv5as/wrist.STL" />
