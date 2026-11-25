@@ -152,7 +152,7 @@
             </xacro:macro>
             
 
-            <xacro:unless value="$(arg use_fake_hardware)">
+            <xacro:unless value="${use_fake_hardware}">
                 <xacro:if value="${controller_type == 'R'}">
                     <!-- R Type Controller IO -->
                     <xacro:gpio_interface interface_name="${prefix}hand_io" add_state_interfaces="true" add_command_interfaces="true"/>
